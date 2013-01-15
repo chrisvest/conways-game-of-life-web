@@ -14,6 +14,10 @@ public class Conway implements Iterable<Set<Cell>> {
       world.add(cell);
     }
   }
+  
+  private static Set<Cell> next(Set<Cell> world) {
+    return new HashSet<Cell>();
+  }
 
   @Override
   public Iterator<Set<Cell>> iterator() {
@@ -21,10 +25,10 @@ public class Conway implements Iterable<Set<Cell>> {
   }
 
   private static final class ConwayIterator implements Iterator<Set<Cell>> {
-    private Set<Cell> world;
+    private Set<Cell> currentWorld;
 
-    public ConwayIterator(Set<Cell> world) {
-      this.world = world;
+    public ConwayIterator(Set<Cell> initialWorld) {
+      this.currentWorld = initialWorld;
     }
 
     @Override
@@ -34,6 +38,8 @@ public class Conway implements Iterable<Set<Cell>> {
 
     @Override
     public Set<Cell> next() {
+      Set<Cell> world = currentWorld;
+      currentWorld = Conway.next(world);
       return world;
     }
 
