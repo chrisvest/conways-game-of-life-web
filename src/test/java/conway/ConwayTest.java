@@ -59,4 +59,12 @@ public class ConwayTest {
         hasItem(new Cell(1,2)),
         hasItem(new Cell(1,-2))));
   }
+  
+  @Test public void
+  cellsWithFourOrMoreNeighboursDieOfOverpopulation() {
+    Cell centerCell = new Cell(1,1);
+    Conway game = new Conway(
+        new Cell(0,1), new Cell(2,1), centerCell, new Cell(1,0), new Cell(1,2));
+    assertThat(second(game), not(hasItem(centerCell)));
+  }
 }

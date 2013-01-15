@@ -51,7 +51,7 @@ public class Conway implements Iterable<Set<Cell>> {
     Set<Cell> set = new HashSet<Cell>();
     for (Map.Entry<Cell, Integer> entry : mappedCounts.entrySet()) {
       int count = entry.getValue();
-      if (count >= 3) {
+      if (count >= 3 && count < 5) {
         set.add(entry.getKey());
       }
     }
