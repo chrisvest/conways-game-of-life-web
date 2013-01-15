@@ -35,4 +35,10 @@ public class ConwayTest {
   loneCellsDie() {
     assertThat(second(new Conway(new Cell(0,0))), emptyIterable());
   }
+  
+  @Test public void
+  cellsWithTwoNeighboursSurvive() {
+    Conway game = new Conway(new Cell(0,0), new Cell(0,1), new Cell(0,2));
+    assertThat(second(game), hasItem(new Cell(0,1)));
+  }
 }
