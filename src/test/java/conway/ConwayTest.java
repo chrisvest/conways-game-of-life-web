@@ -44,6 +44,9 @@ public class ConwayTest {
   cellsWithTwoNeighboursSurvive() {
     Conway game = new Conway(new Cell(0,0), new Cell(0,1), new Cell(0,2));
     assertThat(second(game), hasItem(new Cell(0,1)));
+    assertThat(second(game), noneOf(
+        hasItem(new Cell(0,0)),
+        hasItem(new Cell(0,2))));
   }
   
   @Test public void
