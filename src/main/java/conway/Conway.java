@@ -22,7 +22,7 @@ public class Conway implements Iterable<Set<Cell>> {
   private static Set<Cell> next(Set<Cell> world) {
     List<Cell> neighbourPlanes = shufflePlanes(world);
     Map<Cell, Integer> neighbourCounts = collapseNeighbours(neighbourPlanes);
-    return filterLiveCells(neighbourCounts);
+    return filterLiveCells(neighbourCounts, world);
   }
 
   private static List<Cell> shufflePlanes(Set<Cell> world) {
@@ -47,12 +47,14 @@ public class Conway implements Iterable<Set<Cell>> {
     return map;
   }
 
-  private static Set<Cell> filterLiveCells(Map<Cell, Integer> mappedCounts) {
+  private static Set<Cell> filterLiveCells(
+      Map<Cell, Integer> mappedCounts, Set<Cell> existing) {
     Set<Cell> set = new HashSet<Cell>();
     for (Map.Entry<Cell, Integer> entry : mappedCounts.entrySet()) {
+      Cell cell = entry.getKey();
       int count = entry.getValue();
-      if (count >= 3 && count < 5) { // TODO this can't be right... missing cases
-        set.add(entry.getKey());
+      if (count == 3 || count >= 3 && count < 5 && existing.contains(cell)) {
+        set.add(cell);
       }
     }
     return set;

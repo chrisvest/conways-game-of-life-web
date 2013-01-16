@@ -41,33 +41,20 @@ public class ConwayTest {
   }
   
   @Test public void
-  cellsWithTwoNeighboursSurvive() {
+  threeNeighboursBringLife_TwoNeighboursSurvive() {
     Conway game = new Conway(new Cell(0,0), new Cell(0,1), new Cell(0,2));
-    assertThat(second(game), hasItem(new Cell(0,1)));
-    assertThat(second(game), noneOf(
-        hasItem(new Cell(0,0)),
-        hasItem(new Cell(0,2))));
-  }
-  
-  @Test public void
-  cellsWithThreeNeighboursComeAlive() {
-    Conway game = new Conway(new Cell(0,0), new Cell(0,1), new Cell(0,2));
-    assertThat(second(game), allOf(
-        hasItem(new Cell(1,1)),
-        hasItem(new Cell(-1,1))));
-    assertThat(second(game), noneOf(
-        hasItem(new Cell(-1,2)),
-        hasItem(new Cell(-1,-2))));
-    assertThat(second(game), noneOf(
-        hasItem(new Cell(1,2)),
-        hasItem(new Cell(1,-2))));
+    assertThat(second(game), containsInAnyOrder(
+        new Cell(1,1), new Cell(-1,1), new Cell(0,1)));
   }
   
   @Test public void
   cellsWithFourOrMoreNeighboursDieOfOverpopulation() {
     Cell centerCell = new Cell(1,1);
     Conway game = new Conway(
-        new Cell(0,1), new Cell(2,1), centerCell, new Cell(1,0), new Cell(1,2));
-    assertThat(second(game), not(hasItem(centerCell)));
+        new Cell(1,2), new Cell(0,1), centerCell, new Cell(2,1), new Cell(1,0));
+    assertThat(second(game), containsInAnyOrder(
+        new Cell(0,1), new Cell(2,1), new Cell(1,0), new Cell(1,2),
+        // corners also come alive:
+        new Cell(0,2), new Cell(2,2), new Cell(0,0), new Cell(2,0)));
   }
 }
