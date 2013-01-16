@@ -18,7 +18,7 @@ public class Conway implements Iterable<Set<Cell>> {
       world.add(cell);
     }
   }
-  
+
   private static Set<Cell> next(Set<Cell> world) {
     List<Cell> neighbourPlanes = shufflePlanes(world);
     Map<Cell, Integer> neighbourCounts = collapseNeighbours(neighbourPlanes);
