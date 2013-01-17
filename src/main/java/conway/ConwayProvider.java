@@ -8,7 +8,7 @@ import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class ConwayProvider implements ContextResolver<Conway>, ViewBoardConstraints {
+public class ConwayProvider implements ContextResolver<Conway>, ViewGridConstraints {
 
   @Override
   public Conway getContext(Class<?> type) {

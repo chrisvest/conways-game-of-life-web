@@ -9,14 +9,14 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BoardRendererTest implements ViewBoardConstraints {
+public class GridRendererTest implements ViewGridConstraints {
   private static final byte CELL = '#';
   
-  BoardRenderer renderer;
+  GridRenderer renderer;
   
   @Before public void
   setUp() {
-    renderer = new BoardRenderer();
+    renderer = new GridRenderer();
   }
 
   private Byte[] render(Set<Cell> cells) {

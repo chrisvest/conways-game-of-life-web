@@ -13,15 +13,15 @@ import com.sun.jersey.spi.resource.Singleton;
 
 @Singleton
 @Path("/")
-public class ConwayResource implements ViewBoardConstraints {
+public class ConwayResource implements ViewGridConstraints {
   
   private final Iterator<Set<Cell>> worldSequence;
-  private final BoardRenderer renderer;
+  private final GridRenderer renderer;
 
   public ConwayResource(@Context ContextResolver<Conway> conwayProvider) {
     Conway conway = conwayProvider.getContext(null);
     worldSequence = conway.iterator();
-    renderer = new BoardRenderer();
+    renderer = new GridRenderer();
   }
   
   @GET

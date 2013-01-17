@@ -1,6 +1,6 @@
 package conway;
 
-public interface ViewBoardConstraints {
+public interface ViewGridConstraints {
   public static final int GRID_WIDTH = 175;
   public static final int GRID_HEIGHT = 51;
   public static final int X_FLOOR = 40;
