@@ -17,6 +17,7 @@ public class Main {
     ResourceConfig rc = new PackagesResourceConfig("conway");
     GrizzlyServerFactory.createHttpServer(baseUri, rc);
     
+    System.err.println("PRESS ENTER TO STOP THE SERVER.");
     System.in.read();
   }
 
