@@ -24,7 +24,7 @@ public class ConwayResourceTest {
     when(resolver.getContext(null)).thenReturn(new Conway(new Cell(0,0)));
     ConwayResource resource = new ConwayResource(resolver);
     String board = new String(resource.renderNextGeneration());
-    assertThat(board, startsWith("#····"));
+    assertThat(board, startsWith("#     "));
   }
   
   @Test public void
@@ -34,6 +34,6 @@ public class ConwayResourceTest {
     resource.renderNextGeneration();
     String secondBoard = new String(resource.renderNextGeneration());
     // the lone cell has now died:
-    assertThat(secondBoard, startsWith("······"));
+    assertThat(secondBoard, startsWith("      "));
   }
 }
