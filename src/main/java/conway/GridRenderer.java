@@ -29,7 +29,8 @@ public class GridRenderer implements ViewGridConstraints {
       if (y < 0 || y > GRID_HEIGHT || x < 0 || x > GRID_WIDTH) {
         continue;
       }
-      int lineOffset = y + y * (GRID_WIDTH + 1); // +1 for the new-line
+      // +1 for the extra row, +y for the new-line
+      int lineOffset = y + y * (GRID_WIDTH + 1);
       int offset = x + lineOffset;
       grid[offset] = '#';
     }
